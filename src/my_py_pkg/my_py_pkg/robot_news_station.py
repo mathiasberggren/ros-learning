@@ -9,7 +9,14 @@ class RobotNewsStationNode(Node):
 
     def __init__(self):
         super().__init__("robot_news_station")
-        self.publisher = self.create_publisher(String)
+        self.publisher_ = self.create_publisher(String, "robot_news", 10)
+        self.timer_ = self.create_timer(0.5, self.publish_news)
+        self.get_logger().info("Robot news station is now broadcasting!")
+    
+    def publish_news(self):
+        msg = String()
+        msg.data = "This is RoboBot sending live from the robot news station."
+        self.publisher_.publish(msg)
 
 
 def main(args=None):
