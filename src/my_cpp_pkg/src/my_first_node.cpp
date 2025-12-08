@@ -18,7 +18,6 @@ private:
     void timerCallback()
     {
         RCLCPP_INFO(this->get_logger(), std::format("Hello {}", counter++).c_str());
-        
     }
 
     rclcpp::TimerBase::SharedPtr timer;
